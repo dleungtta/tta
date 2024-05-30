@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Countdown to US National 2024</title>
+    <style>
+        body {
+            margin: 2in 0 0 0; /* 1 inch margin at the top */
+            background-color: black;
+            color: white;
+            font-family: Arial, sans-serif;
+            font-size: 48px; /* Adjust font size for 65-inch TV display */
+        }
+        .container {
+            text-align: center;
+            margin-bottom: 20px; /* Add margin to separate lines */
+        }
+        .footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            text-align: center;
+        }
+        .footer img {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 20px; /* Adjust margin as needed */
+        }
+        .countdown {
+            font-weight: bold;
+            font-size: 72px; /* Extra large font size for countdown */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="line1">Countdown to US National 2024</div>
+        <div id="blank line"></div>
+        <div id="countdown" class="countdown">35 days 00:00:00</div>
+    </div>
+    <div class="footer">
+        <img src="ttalogo.png" alt="TTA Logo">
+    </div>
+
+    <script>
+        // Countdown function
+        function countdown() {
+            var now = new Date();
+            var trialDate = new Date("2024-07-03T00:00:00"); // Assuming date is July 03, 2024, adjust as needed
+            var diff = trialDate - now;
+            var days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            var hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+            document.getElementById("countdown").textContent = days + " days " + 
+                                                                hours.toString().padStart(2, '0') + ":" + 
+                                                                minutes.toString().padStart(2, '0') + ":" + 
+                                                                seconds.toString().padStart(2, '0');
+        }
+
+        // Initial call to countdown
+        countdown();
+
+        // Update countdown every second
+        setInterval(countdown, 1000);
+    </script>
+</body>
+</html>
